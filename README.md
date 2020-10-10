@@ -23,11 +23,13 @@ few building blocks will correctly execute, and some build blocks cause errors o
 
 ## Quam utor?
 
-- Run `scripts/gen.py` to generate the headers and trivial implementations of the shim.
+- Run `scripts/gen.py` to generate the headers and trivial implementations of the shim. It needs the [pharos-demangle](https://github.com/cmu-sei/pharos-demangle) module, which you may have to build and install yourself.
 - Patch the generated sources with the patches found in the `patches` folder.
 - Build the project. You have to use the 32-bit version of MSVC (the `msvc_x86` environment if you are using Visual Studio). Don't forget to set the value for `VIRTOOLS_INCLUDE_DIR` and `VIRTOOLS_LIBS_DIR` to appropriate paths. Place the generated `cks.dll` in the root directory of your Virtools install.
 - Patch the building block library DLL files with `scripts/bblibpatcher.py`. Place the patched DLL files in the `BuildingBlocks` folder in your Virtools install.
 - Try it!
+
+Personally I would recommend doing the first two steps in a UNIX-like environment (WSL would suffice), since you may have to build stuff with non-trivial dependencies from source and deal with tools from GNU.
 
 ## Quid contribuere?
 
