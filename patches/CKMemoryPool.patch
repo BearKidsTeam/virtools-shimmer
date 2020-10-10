@@ -1,0 +1,20 @@
+diff -u src/CKMemoryPoolShim.h /mnt/c/Users/chrisoft/devel/ck21shim/src/CKMemoryPoolShim.h
+--- src/CKMemoryPoolShim.h      2020-10-10 00:22:51.610000000 +0800
++++ /mnt/c/Users/chrisoft/devel/ck21shim/src/CKMemoryPoolShim.h       2020-10-10 00:55:39.394260800 +0800
+@@ -10,6 +10,8 @@
+ #include <CKTypes.h>
+ #include <CKEnums.h>
+
++class VxScratch;
++
+ class DLLEXP CKMemoryPool
+ {
+ public:
+@@ -17,4 +19,7 @@
+        CKMemoryPool & operator=(const CKMemoryPool &) = delete;
+        CKMemoryPool(CKContext *, int);
+        ~CKMemoryPool();
++       void *CKMemoryPool::Mem() const;
++private:
++       VxScratch *s;
+ };

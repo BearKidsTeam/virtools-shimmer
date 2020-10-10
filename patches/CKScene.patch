@@ -1,0 +1,47 @@
+diff -u src/CKSceneShim.h /mnt/c/Users/chrisoft/devel/ck21shim/src/CKSceneShim.h
+--- src/CKSceneShim.h   2020-10-10 00:22:51.610000000 +0800
++++ /mnt/c/Users/chrisoft/devel/ck21shim/src/CKSceneShim.h    2020-10-10 00:54:31.880185200 +0800
+@@ -9,6 +9,42 @@
+ #include <VxDefines.h>
+ #include <CKTypes.h>
+ #include <CKEnums.h>
++#include <CKSceneObjectDesc.h>
++#include <XHashTable.h>
++
++//Taken from CKScene.h
++typedef XHashTable<CKSceneObjectDesc,CK_ID>            CKSODHash;
++typedef CKSODHash::Iterator                                            CKSODHashIt;
++
++class CKSceneObjectIterator {
++public:
++
++       CKSceneObjectIterator(CKSODHashIt it):m_Iterator(it) {}
++
++       CK_ID                           GetObjectID() {return m_Iterator.GetKey();}
++
++       CKSceneObjectDesc*      GetObjectDesc() {return m_Iterator;}
++
++       void                            Rewind()
++       {
++               m_Iterator = m_Iterator.m_Table->Begin();
++       }
++
++       void                            RemoveAt()
++       {
++               m_Iterator = m_Iterator.m_Table->Remove(m_Iterator);
++       }
++
++       int                                     End() {return m_Iterator == m_Iterator.m_Table->End();}
++
++       CKSceneObjectIterator& operator++(int) {
++               ++m_Iterator;
++               return *this;
++       }
++
++       CKSODHashIt m_Iterator;
++};
++//End of code taken from CKScene.h
+
+ class DLLEXP CKScene
+ {
+

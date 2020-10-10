@@ -1,0 +1,12 @@
+diff -u src/GlobalShim.h /mnt/c/Users/chrisoft/devel/ck21shim/src/GlobalShim.h
+--- src/GlobalShim.h    2020-10-10 00:22:51.600000000 +0800
++++ /mnt/c/Users/chrisoft/devel/ck21shim/src/GlobalShim.h     2020-10-10 00:54:46.883997700 +0800
+@@ -3,7 +3,6 @@
+ #include "common.h"
+ #include <stdlib.h>
+ #include <XArray.h>
+-#include <XObjectArray.h>
+ #include <XSArray.h>
+ #include <XString.h>
+ #include <VxDefines.h>
+
